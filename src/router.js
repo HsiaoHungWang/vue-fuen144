@@ -6,6 +6,7 @@ import ContactView from "./views/ContactView.vue"
 import Team1View from "./views/Team1View.vue"
 import Team2View from "./views/Team2View.vue"
 import MemberCenter from "./views/MemberCenter.vue"
+import NotFound from "./views/NotFound.vue"
 
 //路由設定
 //URL <---> Path => 載入 Component
@@ -51,6 +52,11 @@ const routes = [
         component: MemberCenter,
         name: 'member',
         props: true
+    },
+    {
+        //404
+        path: '/:pathMatch(.*)*',
+        component: NotFound
     }
 ]
 
