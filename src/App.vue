@@ -1,4 +1,9 @@
 <script setup>
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.js'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import NavbarComponent from './components/NavbarComponent.vue';
+
 // import FirstComponent from '@/components/FirstComponent.vue';
 
 // import SecondComponent from './components/SecondComponent.vue';
@@ -12,15 +17,19 @@
 </script>
 
 <template> 
+
+<div class="container">
+   <NavbarComponent></NavbarComponent>
 <h2>Hello Vue!!</h2>
 <!-- <img :src="duck" alt="duck1" />  -->
-<RouterLink :to="{name:'home'}">首頁</RouterLink> | 
-<RouterLink :to="{name:'about'}">關於</RouterLink> | 
-<RouterLink :to="{name:'contact'}">聯絡</RouterLink> |
-<RouterLink :to="{name: 'member', params:{id:3}}">會員中心</RouterLink>
+
 <hr />
 
 <RouterView></RouterView>
+
+</div>
+
+
 
 
 
