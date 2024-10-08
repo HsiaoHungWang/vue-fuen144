@@ -22,13 +22,14 @@ const routes = [
         //http://localhost:5173/aboutus
         path: '/aboutus',
         component: AboutView,
+        redirect: '/aboutus/team1', // 新增這一行
         name: 'about',
         children: [
-            //http://localhost:5173/aboutus/
-            // {
-            //     path: 'abcd',
-            //     redirect: 'team1'
-            // },
+            // http://localhost:5173/aboutus/
+            {
+                path: '/',
+                redirect: '/aboutus/team1'
+            },
             //http://localhost:5173/aboutus/team1
             {
                 path: 'team1',
@@ -58,6 +59,11 @@ const routes = [
         component: MemberCenter,
         name: 'member',
         props: true
+    },
+    {
+        //http://localhost:5173/contact'
+        path: '/contact',
+        redirect: '/contactus'    //http://localhost:5173/contactus
     },
     {
         //404
