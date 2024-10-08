@@ -1,7 +1,12 @@
 <script setup>
+import { useRoute } from 'vue-router';
     defineProps({
         id:String
     })
+
+    //取得路由參數
+    const route = useRoute()
+    console.log("id：", route.params.id)
 </script>
 
 <template>
