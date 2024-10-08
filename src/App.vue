@@ -16,7 +16,8 @@
 <!-- <img :src="duck" alt="duck1" />  -->
 <RouterLink :to="{name:'home'}">首頁</RouterLink> | 
 <RouterLink :to="{name:'about'}">關於</RouterLink> | 
-<RouterLink :to="{name:'contact'}">聯絡</RouterLink> 
+<RouterLink :to="{name:'contact'}">聯絡</RouterLink> |
+<RouterLink :to="{name: 'member', params:{id:3}}">會員中心</RouterLink>
 <hr />
 
 <RouterView></RouterView>

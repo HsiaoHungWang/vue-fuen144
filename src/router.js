@@ -5,6 +5,7 @@ import AboutView from "./views/AboutView.vue"
 import ContactView from "./views/ContactView.vue"
 import Team1View from "./views/Team1View.vue"
 import Team2View from "./views/Team2View.vue"
+import MemberCenter from "./views/MemberCenter.vue"
 
 //路由設定
 //URL <---> Path => 載入 Component
@@ -42,6 +43,14 @@ const routes = [
         path: '/contactus',
         component: ContactView,
         name: 'contact'
+    },
+    {
+        //路由參數
+        //http://localhost:5173/member/12
+        path: '/member/:id',
+        component: MemberCenter,
+        name: 'member',
+        props: true
     }
 ]
 
