@@ -4,6 +4,9 @@ import FirstComponent from '@/components/FirstComponent.vue';
 import SecondComponent from './components/SecondComponent.vue';
 import ComponentLife from './components/ComponentLife.vue';
 import ButtonCount from './components/ButtonCount.vue';
+import HomeView from './views/HomeView.vue';
+import AboutView from './views/AboutView.vue';
+import ContactView from './views/ContactView.vue';
 
 // import duck from './assets/duck.png'
 </script>
@@ -17,6 +20,9 @@ import ButtonCount from './components/ButtonCount.vue';
 <second-component></second-component> 
 <ComponentLife></ComponentLife>-->
 <ButtonCount></ButtonCount>
+<HomeView></HomeView>
+<AboutView></AboutView>
+<ContactView></ContactView>
 </template>
 
 <style scoped>
