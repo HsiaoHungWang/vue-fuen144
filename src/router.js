@@ -3,6 +3,8 @@ import { createWebHistory, createRouter } from "vue-router"
 import HomeView from "./views/HomeView.vue"
 import AboutView from "./views/AboutView.vue"
 import ContactView from "./views/ContactView.vue"
+import Team1View from "./views/Team1View.vue"
+import Team2View from "./views/Team2View.vue"
 
 //路由設定
 //URL <---> Path => 載入 Component
@@ -14,10 +16,25 @@ const routes = [
         name: 'home'
     },
     {
-        //http://localhost:5173/about
+        //http://localhost:5173/aboutus
         path: '/aboutus',
         component: AboutView,
-        name: 'about'
+        name: 'about',
+        children: [
+            //http://localhost:5173/aboutus/team1
+            {
+                path: 'team1',
+                component: Team1View,
+                name: 'team1'
+            },
+            //http://localhost:5173/aboutus/team2
+            {
+                path: 'team2',
+                component: Team2View,
+                name: 'team2'
+            }
+
+        ]
     },
 
     {
