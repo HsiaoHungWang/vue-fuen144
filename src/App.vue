@@ -2,6 +2,7 @@
 import FirstComponent from '@/components/FirstComponent.vue';
 
 import SecondComponent from './components/SecondComponent.vue';
+import ComponentLife from './components/ComponentLife.vue';
 
 // import duck from './assets/duck.png'
 </script>
@@ -11,8 +12,9 @@ import SecondComponent from './components/SecondComponent.vue';
 <!-- <img :src="duck" alt="duck1" />  -->
 <hr />
 <!--Tab-->
-<FirstComponent></FirstComponent>
-<second-component></second-component>
+<!-- <FirstComponent></FirstComponent>
+<second-component></second-component> -->
+<ComponentLife></ComponentLife>
 </template>
 
 <style scoped>
