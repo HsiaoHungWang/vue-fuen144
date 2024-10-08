@@ -14,9 +14,9 @@
 <template> 
 <h2>Hello Vue!!</h2>
 <!-- <img :src="duck" alt="duck1" />  -->
-<RouterLink to="/">首頁</RouterLink> | 
-<RouterLink to="/about">關於</RouterLink> | 
-<RouterLink to="/contact">聯絡</RouterLink> 
+<RouterLink :to="{name:'home'}">首頁</RouterLink> | 
+<RouterLink :to="{name:'about'}">關於</RouterLink> | 
+<RouterLink :to="{name:'contact'}">聯絡</RouterLink> 
 <hr />
 
 <RouterView></RouterView>

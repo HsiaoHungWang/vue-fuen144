@@ -10,18 +10,21 @@ const routes = [
     {
         //http://localhost:5173/
         path: '/',
-        component: HomeView
+        component: HomeView,
+        name: 'home'
     },
     {
         //http://localhost:5173/about
-        path: '/about',
-        component: AboutView
+        path: '/aboutus',
+        component: AboutView,
+        name: 'about'
     },
 
     {
         //http://localhost:5173/contact
-        path: '/contact',
-        component: ContactView
+        path: '/contactus',
+        component: ContactView,
+        name: 'contact'
     }
 ]
 
