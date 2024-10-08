@@ -12,8 +12,8 @@ import ComponentLife from './components/ComponentLife.vue';
 <!-- <img :src="duck" alt="duck1" />  -->
 <hr />
 <!--Tab-->
-<!-- <FirstComponent></FirstComponent>
-<second-component></second-component> -->
+<FirstComponent></FirstComponent>
+<!-- <second-component></second-component> -->
 <ComponentLife></ComponentLife>
 </template>
 
