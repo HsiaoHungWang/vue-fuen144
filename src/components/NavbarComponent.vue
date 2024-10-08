@@ -13,27 +13,24 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-        
-          <RouterLink class="nav-link active"  :to="{name:'home'}">首頁</RouterLink>
-
-
+        <li class="nav-item">        
+          <RouterLink class="nav-link" activeClass="active"  :to="{name:'home'}">首頁</RouterLink>
         </li>
         <li class="nav-item">
-            <RouterLink class="nav-link" :to="{name:'about'}">關於</RouterLink>
+            <RouterLink class="nav-link"  activeClass="active"  :to="{name:'about'}">關於</RouterLink>
         </li>
         <li class="nav-item">
-            <RouterLink class="nav-link" :to="{name:'contact'}">聯絡</RouterLink>
+            <RouterLink class="nav-link" activeClass="active"  :to="{name:'contact'}">聯絡</RouterLink>
         </li>
         <li class="nav-item">
-            <RouterLink class="nav-link" :to="{name: 'member', params:{id:3}}">會員中心</RouterLink>
+            <RouterLink class="nav-link" activeClass="active"  :to="{name: 'member', params:{id:3}}">會員中心</RouterLink>
         </li>
       </ul>
     </div>
 
     <div class="d-lg-flex col-lg-3 justify-content-lg-end">
             <button class="btn btn-primary"><i class="bi bi-cart4"></i></button>
-          </div>
+    </div>
   </div>
 </nav>
 </template>

@@ -15,7 +15,8 @@ const routes = [
         //http://localhost:5173/
         path: '/',
         component: HomeView,
-        name: 'home'
+        name: 'home',
+        alias: '/index'    //http://localhost:5173/index
     },
     {
         //http://localhost:5173/aboutus
@@ -23,6 +24,11 @@ const routes = [
         component: AboutView,
         name: 'about',
         children: [
+            //http://localhost:5173/aboutus/
+            // {
+            //     path: 'abcd',
+            //     redirect: 'team1'
+            // },
             //http://localhost:5173/aboutus/team1
             {
                 path: 'team1',
