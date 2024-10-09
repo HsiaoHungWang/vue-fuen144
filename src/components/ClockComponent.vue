@@ -33,19 +33,21 @@ import { ref, watch, watchEffect } from 'vue';
 
      //加上 immediate:true，第一次組件載入時會執行
      //watch無法監聽物件資料的改變，如果要監聽物件資料的改變要加上 deep:true
-    //  watch(clock1, (newData, oldData)=>{
-    //      console.log("new：", newData.theTime)
-    //      console.log("old：", oldData.theTime)
+    //  watch(()=>clock1, (newData, oldData)=>{
+    //     //  const cloneData = JSON.parse(JSON.stringify(oldData))
+    //     //  console.log(cloneData.value.theTime)
+    //      console.log("new：", newData.value.theTime)
+    //      console.log("old：", oldData.value.theTime)
     //      //串接API
     //      //fetch()
     //      //DOM 
     // },{deep:true}) 
 
     //vue3 有個watch簡化版 - watchEffect
-    watchEffect(()=>{
-        console.log('clock：', clock.value)
-        console.log('clock1：', clock1.value.theTime)
-    })
+    // watchEffect(()=>{
+    //     console.log('clock：', clock.value)
+    //     console.log('clock1：', clock1.value.theTime)
+    // })
 
 
 </script>
