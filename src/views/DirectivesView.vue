@@ -39,20 +39,21 @@ setTimeout(()=>{
         <p>請先 <button  @click="isLoggedIn=!isLoggedIn">登入</button></p>
     </div>
    
+    <!-- v-for 讀取陣列 -->
     <select v-model="selectedOption">
         <option v-for="(region, index) in regions" :key="region.code" :value="region.code">{{index}} {{region.name}}</option>      
     </select>
     <span>{{ selectedOption }}</span>
-
+<!-- v-for 讀取物件 -->
     <ul>
         <li v-for="(value, key) in user">{{key}}：{{ value }}</li>      
     </ul>
-
+<!-- v-for 產生數字範圍 -->
     <nav aria-label="...">
-  <ul class="pagination pagination-lg">   
-    <li class="page-item" v-for="i in 5"><a class="page-link" href="#">{{i}}</a></li>  
-  </ul>
-</nav>
+    <ul class="pagination pagination-lg">   
+        <li class="page-item" v-for="i in 5"><a class="page-link" href="#">{{i}}</a></li>  
+    </ul>
+    </nav>
 
 
     </div>
