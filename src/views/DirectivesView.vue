@@ -14,6 +14,9 @@ const regions = ref([
 ])
 const selectedOption = ref('802')
 
+const user = ref({"name":"Jack","age":29,"email":"Jack@gmail.com"})
+
+
 setTimeout(()=>{
     isLoading.value = false    
 },3000)
@@ -40,6 +43,18 @@ setTimeout(()=>{
         <option v-for="(region, index) in regions" :key="region.code" :value="region.code">{{index}} {{region.name}}</option>      
     </select>
     <span>{{ selectedOption }}</span>
+
+    <ul>
+        <li v-for="(value, key) in user">{{key}}：{{ value }}</li>      
+    </ul>
+
+    <nav aria-label="...">
+  <ul class="pagination pagination-lg">   
+    <li class="page-item" v-for="i in 5"><a class="page-link" href="#">{{i}}</a></li>  
+  </ul>
+</nav>
+
+
     </div>
 </template>
 
