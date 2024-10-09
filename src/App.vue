@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import NavbarComponent from './components/NavbarComponent.vue';
+import ClockComponent from './components/ClockComponent.vue';
 
 // import FirstComponent from '@/components/FirstComponent.vue';
 
@@ -20,7 +21,7 @@ import NavbarComponent from './components/NavbarComponent.vue';
 
 <div class="container">
    <NavbarComponent></NavbarComponent>
-<h2>Hello Vue!!</h2>
+<h2>Hello Vue!! <ClockComponent></ClockComponent></h2>
 <!-- <img :src="duck" alt="duck1" />  -->
 
 <hr />
