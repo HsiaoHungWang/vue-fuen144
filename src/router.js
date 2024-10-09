@@ -8,6 +8,9 @@ import Team2View from "./views/Team2View.vue"
 import MemberCenter from "./views/MemberCenter.vue"
 import NotFound from "./views/NotFound.vue"
 import DirectivesView from "./views/DirectivesView.vue"
+import TodosView from "./views/TodosView.vue"
+import RegisterView from "./views/RegisterView.vue"
+import LoginView from "./views/LoginView.vue"
 
 //路由設定
 //URL <---> Path => 載入 Component
@@ -58,6 +61,24 @@ const routes = [
         path: '/directives',
         component: DirectivesView,
         name: 'directives'
+    },
+    {
+        //http://localhost:5173/todos
+        path: '/todos',
+        component: TodosView,
+        name: 'todos'
+    },
+    {
+        //http://localhost:5173/register
+        path: '/register',
+        component: RegisterView,
+        name: 'register'
+    },
+    {
+        //http://localhost:5173/login
+        path: '/login',
+        component: LoginView,
+        name: 'login'
     },
     {
         //路由參數
