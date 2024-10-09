@@ -1,4 +1,15 @@
 <script setup>
+import { ref } from 'vue';
+
+const todos = ref(
+    [
+        { "id": "m21uwqfprb0ncx4", "title": "todo1", "completed": false },
+        { "id": "m21w6x73hw2tvrc", "title": "todo2", "completed": true },
+        { "id": "m21w6x73hw2abcd", "title": "todo3", "completed": false },
+    ]
+)
+//取得唯一值
+const uniqueId = () => Date.now().toString(36) + Math.random().toString(36).substring(2, 9);
 
 </script>
 
