@@ -5,7 +5,9 @@ import { ref } from 'vue';
     const FirstName = ref('Jack')
     const LastName = ref('Wu')
     const isLogin = ref(true)
+    const duck = ref('小鴨')
     const week = ref(["日", "一", "二", "三", "四", "五", "六"])
+    const isDisabled = ref(false)
 
     console.log(week.value[new Date().getDay()])
     const author = ref({    
@@ -41,6 +43,11 @@ import { ref } from 'vue';
       <p>{{ i+=1 }}，{{ i++ }}</p> <!--怪怪的結果-->
       <p>星期 {{week[new Date().getDay()]}}</p>
       <p>出版了書籍 {{ author.books.length > 0 ? "是":"否" }}</p>
+      <hr />
+      <input type="checkbox" v-model="isDisabled" /> 我已同意並閱讀服務條款及隱私權保護政策
+      <button :disabled="!isDisabled">送出</button>
+      <img src="@/assets/duck.png" v-bind:alt="duck" :title />
+      
     </div>
 </template>
 
