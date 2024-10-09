@@ -17,9 +17,27 @@ const selectedOption = ref('802')
 const user = ref({"name":"Jack","age":29,"email":"Jack@gmail.com"})
 
 
+const bgColor = ref("pink")
+const radius = ref("25px")
+const styleObject = ref({
+    color:"white",
+    fontSize:"48px"
+})
+const items = ref([]);
+
 setTimeout(()=>{
     isLoading.value = false    
 },3000)
+
+const keyword = ref('')
+const keyupHandler = (event)=>{
+    console.log(event.which)
+   console.log(keyword.value)
+}
+const clearHandler = ()=>{
+  keyword.value=""
+}
+
 
 </script>
 
@@ -55,10 +73,27 @@ setTimeout(()=>{
     </ul>
     </nav>
 
+     <div style="width:200px;height:100px;border:1px solid green;"
+     v-bind:style="{'backgroundColor':bgColor, 'border-radius': radius}" :style="styleObject">abcdefg</div>
 
+     <div :class="{active:true, 'text-danger':false}">class 樣式</div>
+
+      <input type="checkbox" value="a" v-model="items">Item1
+      <input type="checkbox" value="b" v-model="items">Item2
+      <input type="checkbox" value="c" v-model="items">Item3
+      <input type="checkbox" value="d" v-model="items">Item4
+      <div>選取 {{items}}</div>
+
+      <input type="text" v-model="keyword" @keyup.delete="clearHandler" @keyup.enter="keyupHandler" ><span>{{ keyword }}</span>
     </div>
 </template>
 
 <style lang="css" scoped>
-
+.active{
+    border:1px solid green;
+}
+.text-danger{
+    background-color: red;
+    color:white
+}
 </style>
