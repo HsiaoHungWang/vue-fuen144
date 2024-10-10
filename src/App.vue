@@ -4,6 +4,8 @@ import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import NavbarComponent from './components/NavbarComponent.vue';
 import ClockComponent from './components/ClockComponent.vue';
+import PagingComponent from './components/PagingComponent.vue';
+import { ref } from 'vue';
 
 // import FirstComponent from '@/components/FirstComponent.vue';
 
@@ -15,6 +17,11 @@ import ClockComponent from './components/ClockComponent.vue';
 // import ContactView from './views/ContactView.vue';
 
 // import duck from './assets/duck.png'
+
+const totalPages = ref(8)
+const pagingHandler = page=>{
+   alert('paging'+page)
+}
 </script>
 
 <template> 
@@ -23,7 +30,7 @@ import ClockComponent from './components/ClockComponent.vue';
    <NavbarComponent></NavbarComponent>
 <h2>Hello Vue!! <ClockComponent></ClockComponent></h2>
 <!-- <img :src="duck" alt="duck1" />  -->
-
+<PagingComponent :totalPages="totalPages" thePage="1" @goPaging="pagingHandler" ></PagingComponent>
 <hr />
 
 <RouterView></RouterView>
