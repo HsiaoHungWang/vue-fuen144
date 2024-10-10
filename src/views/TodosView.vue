@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 const newTodo = ref('')
 const todos = ref(
     [
@@ -17,6 +17,18 @@ const addTodo = ()=>{
     newTodo.value = ''
 }
 
+//Todo 刪除
+const removeTodo = (todo) => {
+   const idx = todos.value.indexOf(todo);
+   todos.value.splice(idx, 1)
+}
+
+const remaining = computed(()=>{
+   const activeTodos =  todos.value.filter(todo => !todo.completed)
+   return activeTodos.length
+
+})
+
 </script>
 
 <template>
@@ -32,14 +44,14 @@ const addTodo = ()=>{
                             <input class="form-check-input me-3" type="checkbox" v-model="todo.completed">
                             <label class="form-check-label">{{ todo.title }}</label>
                         </div>
-                        <button class="badge bg-danger rounded-pill border-0">X</button>
+                        <button @click="removeTodo(todo)" class="badge bg-danger rounded-pill border-0">X</button>
                     </div>
                     <!-- <input type="text" class="form-control" v-model="todo.title"> -->
                 </li>
               
             </ul>
             <div class="mt-3 d-flex justify-content-between">
-                <strong class=" me-3">尚有 3 個工作未完成</strong>
+                <strong class=" me-3">尚有 {{remaining}} 個工作未完成</strong>
                 <button class="btn btn-warning me-3">清除完成工作</button>
             </div>
         </div>
