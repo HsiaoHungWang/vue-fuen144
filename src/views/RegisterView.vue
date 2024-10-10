@@ -3,23 +3,23 @@
         <div class="col-3"></div>
         <div class="col-6">
             <h3>會員註冊</h3>
-            <form id="registerForm" novalidate>
+            <form id="registerForm" novalidate @submit.prevent="validate">
                 <div class="input-group">
                     <label for="account" class="input-group-text">帳號</label>
-                    <input type="text" class="form-control" id="account" required autofocus autocomplete="off">
+                    <input type="text" class="form-control" v-model="userData.username" id="account" required autofocus autocomplete="off">
                     <span class="input-group-text bg-danger text-white"><i class="bi bi-x-lg"></i></span>
                 </div>
                 <div class="mb-3"><small class="text-danger">帳號一定要輸入</small></div>
                 <div class="input-group">
                     <label for="pwd1" class="input-group-text">密碼</label>
-                    <input type="password" class="form-control" id="pwd1" autocomplete="off">
+                    <input type="password" class="form-control" v-model="userData.pwd1" id="pwd1" autocomplete="off">
                     <span class="input-group-text bg-danger text-white"><i class="bi bi-x-lg"></i></span>
                 </div>
                 <div class="mb-3"><small class="text-danger">密碼一定要輸入</small></div>
 
                 <div class="input-group">
                     <label for="pwd2" class="input-group-text">密碼確認</label>
-                    <input type="password" class="form-control" id="pwd2" autocomplete="off">
+                    <input type="password" class="form-control" v-model="userData.pwd2" id="pwd2" autocomplete="off">
                     <span class="input-group-text bg-danger text-white hide"><i class="bi bi-x-lg"></i></span>
                 </div>
                 <div class="mb-3">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="input-group">
                     <label for="email" class="input-group-text">電子郵件</label>
-                    <input type="email" class="form-control" id="email">
+                    <input type="email" v-model="userData.useremail" class="form-control" id="email">
                     <span class="input-group-text bg-danger text-white"><i class="bi bi-x-lg"></i></span>
                 </div>
                 <div class="mb-3">
@@ -48,8 +48,25 @@
 
 <style></style>
 <script setup>
+import { ref } from 'vue';
+
+
+
+const userData = ref({
+    "username":"",
+    "pwd1":"",
+    "pwd2":"",
+    "useremail":""
+})
+
+
 const emailRule = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
-
+const validate = ()=>{
+  
+    console.log(userData.value)
+    
+    //fetch
+}
 
 </script>
