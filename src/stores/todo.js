@@ -8,12 +8,13 @@ export const useTodoStore = defineStore('todo', () => {
         todos = JSON.parse(todos)
     }
 
+
     //待完成工作數量
-    const activeTodos = todos.value.filter(todo => !todo.completed)
+    const activeTodos = todos.filter(todo => !todo.completed)
     const qty = ref(activeTodos.length)
 
-    const qtyChange = qty => {
-        qty.value = qty
+    const qtyChange = count => {
+        qty.value = count
     }
 
     return { qty, qtyChange }

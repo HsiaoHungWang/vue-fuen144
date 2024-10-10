@@ -3,6 +3,8 @@ import TodoAdd from '@/components/TodoAdd.vue';
 import TodoFooter from '@/components/TodoFooter.vue';
 import { computed, ref, watchEffect } from 'vue';
 // const newTodo = ref('')
+import { useTodoStore } from '@/stores/todo';
+const todoStore = useTodoStore()
 
 const editedTodo = ref({}) //紀錄目前修改的是哪一個Todo
 const oldTodoTitle = ref('')
@@ -67,6 +69,8 @@ const remaining = computed(()=>{
 watchEffect(()=>{
     //將todos寫進localStorage
     localStorage.setItem("todos", JSON.stringify(todos.value))
+    const activeTodos =  todos.value.filter(todo => !todo.completed)
+    todoStore.qtyChange(activeTodos.length)
 })
 
 </script>
