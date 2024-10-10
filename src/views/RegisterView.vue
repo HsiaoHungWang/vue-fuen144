@@ -6,13 +6,13 @@
             <form id="registerForm" novalidate @submit.prevent="validate">
                 <div class="input-group">
                     <label for="account" class="input-group-text">帳號</label>
-                    <input type="text" class="form-control" v-model="userData.username" id="account" required autofocus autocomplete="off">
+                    <input type="text" class="form-control" v-model.trim="userData.username" id="account" required autofocus autocomplete="off">
                     <span class="input-group-text bg-danger text-white"><i class="bi bi-x-lg"></i></span>
                 </div>
                 <div class="mb-3"><small class="text-danger">帳號一定要輸入</small></div>
                 <div class="input-group">
                     <label for="pwd1" class="input-group-text">密碼</label>
-                    <input type="password" class="form-control" v-model="userData.pwd1" id="pwd1" autocomplete="off">
+                    <input type="password" class="form-control" v-model.trim="userData.pwd1" id="pwd1" autocomplete="off">
                     <span class="input-group-text bg-danger text-white"><i class="bi bi-x-lg"></i></span>
                 </div>
                 <div class="mb-3"><small class="text-danger">密碼一定要輸入</small></div>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="input-group">
                     <label for="email" class="input-group-text">電子郵件</label>
-                    <input type="email" v-model="userData.useremail" class="form-control" id="email">
+                    <input type="email" v-model.trim="userData.useremail" class="form-control" id="email">
                     <span class="input-group-text bg-danger text-white"><i class="bi bi-x-lg"></i></span>
                 </div>
                 <div class="mb-3">
@@ -59,13 +59,36 @@ const userData = ref({
     "useremail":""
 })
 
+const validity = ref({
+    "userNameRequired":true,
+    "pwdRequired":true,
+    "emailRequired":true,
+    'pwdConfirm':true,
+    'emailFormat':true
+})
 
+//new RegExp("^[^@\s]+@[^@\s]+\.[^@\s]+$")
 const emailRule = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
 const validate = ()=>{
   
+    //驗證資料正確性
+
+    //資料一定要輸入的驗證
+    validity.value.userNameRequired = userData.value.username.length > 0
+    validity.value.pwdRequired = userData.value.pwd1.length > 0
+    validity.value.emailRequired = userData.value.useremail.length > 0
+
+    //密碼跟密碼確認需一致
+    validity.value.pwdConfirm = userData.value.pwd1 === userData.value.pwd2
+
+    //Email格式是否正確
+    validity.value.emailFormat = emailRule.test(userData.value.useremail)
+
+
+    console.log(validity.value)
     console.log(userData.value)
-    
+
     //fetch
 }
 
