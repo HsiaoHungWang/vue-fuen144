@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-
+const newTodo = ref('')
 const todos = ref(
     [
         { "id": "m21uwqfprb0ncx4", "title": "todo1", "completed": false },
@@ -11,6 +11,12 @@ const todos = ref(
 //取得唯一值
 const uniqueId = () => Date.now().toString(36) + Math.random().toString(36).substring(2, 9);
 
+//Todo 新增
+const addTodo = ()=>{
+    todos.value.push({ "id": uniqueId(), "title": newTodo.value, "completed": false })
+    newTodo.value = ''
+}
+
 </script>
 
 <template>
@@ -18,7 +24,7 @@ const uniqueId = () => Date.now().toString(36) + Math.random().toString(36).subs
         <div class="col-3"> </div>
         <div class="col-6">
             <h3>Todos Page</h3>
-            <input type="text" class="form-control" autofocus autocomplete="off" placeholder="想要做甚麼?">
+            <input type="text" v-model.trim="newTodo" @keyup.enter="addTodo" class="form-control" autofocus autocomplete="off" placeholder="想要做甚麼?">
             <ul class="list-group mt-3">
                 <li v-for="todo in todos" :key="todo.id" class="list-group-item">
                     <div class="d-flex justify-content-between">
