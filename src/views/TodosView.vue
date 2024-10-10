@@ -20,36 +20,17 @@ const uniqueId = () => Date.now().toString(36) + Math.random().toString(36).subs
             <h3>Todos Page</h3>
             <input type="text" class="form-control" autofocus autocomplete="off" placeholder="想要做甚麼?">
             <ul class="list-group mt-3">
-                <li class="list-group-item">
+                <li v-for="todo in todos" :key="todo.id" class="list-group-item">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <input class="form-check-input me-3" type="checkbox">
-                            <label class="form-check-label">todo1</label>
+                            <input class="form-check-input me-3" type="checkbox" v-model="todo.completed">
+                            <label class="form-check-label">{{ todo.title }}</label>
                         </div>
                         <button class="badge bg-danger rounded-pill border-0">X</button>
                     </div>
-                    <input type="text" class="form-control">
+                    <!-- <input type="text" class="form-control" v-model="todo.title"> -->
                 </li>
-                <li class="list-group-item">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <input class="form-check-input me-3" type="checkbox">
-                            <label class="form-check-label">todo2</label>
-                        </div>
-                        <button class="badge bg-danger rounded-pill border-0">X</button>
-                    </div>
-                    <input type="text" class="form-control">
-                </li>
-                <li class="list-group-item">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <input class="form-check-input me-3" type="checkbox">
-                            <label class="form-check-label">todo3</label>
-                        </div>
-                        <button class="badge bg-danger rounded-pill border-0">X</button>
-                    </div>
-                    <input type="text" class="form-control">
-                </li>
+              
             </ul>
             <div class="mt-3 d-flex justify-content-between">
                 <strong class=" me-3">尚有 3 個工作未完成</strong>
