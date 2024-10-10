@@ -1,6 +1,10 @@
 <script setup>
 import { computed, ref } from 'vue';
 const newTodo = ref('')
+
+const editedTodo = ref({}) //紀錄目前修改的是哪一個Todo
+const oldTodoTitle = ref('')
+
 const todos = ref(
     [
         { "id": "m21uwqfprb0ncx4", "title": "todo1", "completed": false },
@@ -23,10 +27,25 @@ const removeTodo = (todo) => {
    todos.value.splice(idx, 1)
 }
 
+//紀錄目前修改的是哪一個Todo
+const editTodo = todo =>{
+    editedTodo.value = todo
+    oldTodoTitle.value = todo.title   
+}
+//完成修改
+const doneEdit = () => {
+    editedTodo.value = {}
+}
+//取消修改
+const cancelEdit = todo => {
+    //還原修改前的資料  
+    todo.title = oldTodoTitle.value  
+    editedTodo.value = {}
+}
+
 const remaining = computed(()=>{
    const activeTodos =  todos.value.filter(todo => !todo.completed)
    return activeTodos.length
-
 })
 
 </script>
@@ -39,14 +58,14 @@ const remaining = computed(()=>{
             <input type="text" v-model.trim="newTodo" @keyup.enter="addTodo" class="form-control" autofocus autocomplete="off" placeholder="想要做甚麼?">
             <ul class="list-group mt-3">
                 <li v-for="todo in todos" :key="todo.id" class="list-group-item">
-                    <div class="d-flex justify-content-between">
+                    <div v-if="editedTodo !== todo" class="d-flex justify-content-between">
                         <div>
                             <input class="form-check-input me-3" type="checkbox" v-model="todo.completed">
-                            <label class="form-check-label">{{ todo.title }}</label>
+                            <label @dblclick="editTodo(todo)" class="form-check-label">{{ todo.title }}</label>
                         </div>
                         <button @click="removeTodo(todo)" class="badge bg-danger rounded-pill border-0">X</button>
                     </div>
-                    <!-- <input type="text" class="form-control" v-model="todo.title"> -->
+                    <input @keyup.escape="cancelEdit(todo)" @blur="doneEdit" @keyup.enter="doneEdit(todo)" v-else type="text" class="form-control" v-model.trim="todo.title">
                 </li>
               
             </ul>
