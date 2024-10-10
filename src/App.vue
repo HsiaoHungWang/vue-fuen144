@@ -6,6 +6,8 @@ import NavbarComponent from './components/NavbarComponent.vue';
 import ClockComponent from './components/ClockComponent.vue';
 import PagingComponent from './components/PagingComponent.vue';
 import { ref } from 'vue';
+import UseStoreDemo from './components/UseStoreDemo.vue';
+import UseStoreTest from './components/UseStoreTest.vue';
 
 // import FirstComponent from '@/components/FirstComponent.vue';
 
@@ -32,6 +34,10 @@ const pagingHandler = page=>{
 <!-- <img :src="duck" alt="duck1" />  -->
 <PagingComponent :totalPages="totalPages" thePage="1" @goPaging="pagingHandler" ></PagingComponent>
 <hr />
+<UseStoreDemo></UseStoreDemo>
+<hr/>
+<UseStoreTest></UseStoreTest>
+<hr/>
 
 <RouterView></RouterView>
 
