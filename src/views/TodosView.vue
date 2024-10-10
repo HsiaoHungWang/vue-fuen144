@@ -1,6 +1,8 @@
 <script setup>
+import TodoAdd from '@/components/TodoAdd.vue';
+import TodoFooter from '@/components/TodoFooter.vue';
 import { computed, ref } from 'vue';
-const newTodo = ref('')
+// const newTodo = ref('')
 
 const editedTodo = ref({}) //紀錄目前修改的是哪一個Todo
 const oldTodoTitle = ref('')
@@ -17,10 +19,12 @@ const todos = ref(
 const uniqueId = () => Date.now().toString(36) + Math.random().toString(36).substring(2, 9);
 
 //Todo 新增
-const addTodo = ()=>{
-    todos.value.push({ "id": uniqueId(), "title": newTodo.value, "completed": false })
-    newTodo.value = ''
+const addTodo = title=>{
+    todos.value.push({ "id": uniqueId(), "title": title, "completed": false })
+    // newTodo.value = ''
 }
+
+
 
 //Todo 刪除
 const removeTodo = (todo) => {
@@ -64,7 +68,8 @@ const remaining = computed(()=>{
         <div class="col-3"> </div>
         <div class="col-6">
             <h3>Todos Page</h3>
-            <input type="text" v-model.trim="newTodo" @keyup.enter="addTodo" class="form-control" autofocus autocomplete="off" placeholder="想要做甚麼?">
+            <!-- <input type="text" v-model.trim="newTodo" @keyup.enter="addTodo" class="form-control" autofocus autocomplete="off" placeholder="想要做甚麼?"> -->
+            <TodoAdd @addTodo="addTodo"></TodoAdd>
             <ul class="list-group mt-3">
                 <li v-for="todo in todos" :key="todo.id" class="list-group-item">
                     <div v-if="editedTodo !== todo" class="d-flex justify-content-between">
@@ -78,10 +83,11 @@ const remaining = computed(()=>{
                 </li>
               
             </ul>
-            <div class="mt-3 d-flex justify-content-between">
+            <!-- <div class="mt-3 d-flex justify-content-between">
                 <strong class=" me-3">尚有 {{remaining}} 個工作未完成</strong>
                 <button class="btn btn-warning me-3" @click="removeComplete">清除完成工作</button>
-            </div>
+            </div> -->
+            <TodoFooter :remaining="remaining" @removeComplete="removeComplete"></TodoFooter>
         </div>
         <div class="col-3"></div>
 
