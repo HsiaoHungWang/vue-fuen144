@@ -5,6 +5,7 @@ const newTodo = ref('')
 const editedTodo = ref({}) //紀錄目前修改的是哪一個Todo
 const oldTodoTitle = ref('')
 
+
 const todos = ref(
     [
         { "id": "m21uwqfprb0ncx4", "title": "todo1", "completed": false },
@@ -42,6 +43,14 @@ const cancelEdit = todo => {
     todo.title = oldTodoTitle.value  
     editedTodo.value = {}
 }
+//移除已完成工作
+const removeComplete = ()=>{
+    for(let i=todos.value.length-1;i>=0;i--){
+        if(todos.value[i].completed){
+            todos.value.splice(i, 1)
+        }
+    }
+}
 
 const remaining = computed(()=>{
    const activeTodos =  todos.value.filter(todo => !todo.completed)
@@ -61,7 +70,7 @@ const remaining = computed(()=>{
                     <div v-if="editedTodo !== todo" class="d-flex justify-content-between">
                         <div>
                             <input class="form-check-input me-3" type="checkbox" v-model="todo.completed">
-                            <label @dblclick="editTodo(todo)" class="form-check-label">{{ todo.title }}</label>
+                            <label @dblclick="editTodo(todo)" class="form-check-label" :class="{completed:todo.completed}">{{ todo.title }}</label>
                         </div>
                         <button @click="removeTodo(todo)" class="badge bg-danger rounded-pill border-0">X</button>
                     </div>
@@ -71,7 +80,7 @@ const remaining = computed(()=>{
             </ul>
             <div class="mt-3 d-flex justify-content-between">
                 <strong class=" me-3">尚有 {{remaining}} 個工作未完成</strong>
-                <button class="btn btn-warning me-3">清除完成工作</button>
+                <button class="btn btn-warning me-3" @click="removeComplete">清除完成工作</button>
             </div>
         </div>
         <div class="col-3"></div>
