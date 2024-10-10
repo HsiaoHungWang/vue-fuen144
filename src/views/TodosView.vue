@@ -1,20 +1,24 @@
 <script setup>
 import TodoAdd from '@/components/TodoAdd.vue';
 import TodoFooter from '@/components/TodoFooter.vue';
-import { computed, ref } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 // const newTodo = ref('')
 
 const editedTodo = ref({}) //紀錄目前修改的是哪一個Todo
 const oldTodoTitle = ref('')
 
 
-const todos = ref(
-    [
-        { "id": "m21uwqfprb0ncx4", "title": "todo1", "completed": false },
-        { "id": "m21w6x73hw2tvrc", "title": "todo2", "completed": true },
-        { "id": "m21w6x73hw2abcd", "title": "todo3", "completed": false },
-    ]
-)
+// const todos = ref(
+//     [
+//         { "id": "m21uwqfprb0ncx4", "title": "todo1", "completed": false },
+//         { "id": "m21w6x73hw2tvrc", "title": "todo2", "completed": true },
+//         { "id": "m21w6x73hw2abcd", "title": "todo3", "completed": false },
+//     ]
+// )
+
+const todos = ref(JSON.parse(localStorage.getItem('todos')) || [])
+
+
 //取得唯一值
 const uniqueId = () => Date.now().toString(36) + Math.random().toString(36).substring(2, 9);
 
@@ -23,7 +27,6 @@ const addTodo = title=>{
     todos.value.push({ "id": uniqueId(), "title": title, "completed": false })
     // newTodo.value = ''
 }
-
 
 
 //Todo 刪除
@@ -59,6 +62,11 @@ const removeComplete = ()=>{
 const remaining = computed(()=>{
    const activeTodos =  todos.value.filter(todo => !todo.completed)
    return activeTodos.length
+})
+
+watchEffect(()=>{
+    //將todos寫進localStorage
+    localStorage.setItem("todos", JSON.stringify(todos.value))
 })
 
 </script>
