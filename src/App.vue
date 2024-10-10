@@ -9,9 +9,8 @@ import { ref } from 'vue';
 import UseStoreDemo from './components/UseStoreDemo.vue';
 import UseStoreTest from './components/UseStoreTest.vue';
 
-// import FirstComponent from '@/components/FirstComponent.vue';
-
-// import SecondComponent from './components/SecondComponent.vue';
+import FirstComponent from '@/components/FirstComponent.vue';
+import SecondComponent from './components/SecondComponent.vue';
 // import ComponentLife from './components/ComponentLife.vue';
 // import ButtonCount from './components/ButtonCount.vue';
 // import HomeView from './views/HomeView.vue';
@@ -24,21 +23,24 @@ const totalPages = ref(8)
 const pagingHandler = page=>{
    alert('paging'+page)
 }
+
+const items = [FirstComponent, SecondComponent]
 </script>
 
 <template> 
 
 <div class="container">
    <NavbarComponent></NavbarComponent>
-<h2>Hello Vue!! <ClockComponent></ClockComponent></h2>
+<!-- <h2>Hello Vue!! <ClockComponent></ClockComponent></h2> -->
 <!-- <img :src="duck" alt="duck1" />  -->
-<PagingComponent :totalPages="totalPages" thePage="1" @goPaging="pagingHandler" ></PagingComponent>
+<!-- <PagingComponent :totalPages="totalPages" thePage="1" @goPaging="pagingHandler" ></PagingComponent>
 <hr />
 <UseStoreDemo></UseStoreDemo>
 <hr/>
 <UseStoreTest></UseStoreTest>
 <hr/>
-
+<component :is="items[1]"></component> -->
+<hr/>
 <RouterView></RouterView>
 
 </div>

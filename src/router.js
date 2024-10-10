@@ -11,6 +11,7 @@ import DirectivesView from "./views/DirectivesView.vue"
 import TodosView from "./views/TodosView.vue"
 import RegisterView from "./views/RegisterView.vue"
 import LoginView from "./views/LoginView.vue"
+import TabsView from "./views/TabsView.vue"
 
 //路由設定
 //URL <---> Path => 載入 Component
@@ -79,6 +80,12 @@ const routes = [
         path: '/login',
         component: LoginView,
         name: 'login'
+    },
+    {
+        //http://localhost:5173/login
+        path: '/tabs',
+        component: TabsView,
+        name: 'tabs'
     },
     {
         //路由參數
