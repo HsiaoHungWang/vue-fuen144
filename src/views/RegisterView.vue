@@ -110,6 +110,9 @@ const validate = async()=>{
        
         //alert('送出')
           //todo 將userData資料透過fecth()傳送到API
+        //要開發檔案上傳的功能，可以使用FormData
+        //伺服器端接收FormData的資料，參數前要加上([FromForm])
+        //伺服器端要用 IFormFile類型的參數 接收上傳的檔案
         const formData = new FormData(document.userData)
         const response = await fetch(API_URL,{
             method:'POST',
