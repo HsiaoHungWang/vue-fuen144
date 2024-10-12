@@ -14,6 +14,7 @@ import LoginView from "./views/LoginView.vue"
 import TabsView from "./views/TabsView.vue"
 import AnimationView from "./views/AnimationView.vue"
 import CategoryCRUD from "./views/CategoryCRUD.vue"
+import SpotsView from "./views/SpotsView.vue"
 
 //路由設定
 //URL <---> Path => 載入 Component
@@ -100,6 +101,12 @@ const routes = [
         path: '/category',
         component: CategoryCRUD,
         name: 'category'
+    },
+    {
+        //http://localhost:5173/spots
+        path: '/spots',
+        component: SpotsView,
+        name: 'spots'
     },
     {
         //路由參數
