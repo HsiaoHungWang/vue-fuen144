@@ -1,13 +1,16 @@
 <script setup>
 import { ref } from 'vue';
 
-    const API_URL = 'https://localhost:7259/api/Categories'
+    const BASE_URL = import.meta.env.VITE_API_BASEURL
+
+    const API_URL = `${BASE_URL}/Categories` //'https://localhost:7259/api/Categories'
     const categories = ref([])
 
     //讀取Categories資料
     const loadCategories = async()=>{
          const response = await fetch(API_URL)
          const datas = await response.json()
+         console.log(datas)
          categories.value = datas         
     }
 
