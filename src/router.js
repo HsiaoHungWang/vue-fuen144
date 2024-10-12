@@ -13,6 +13,7 @@ import RegisterView from "./views/RegisterView.vue"
 import LoginView from "./views/LoginView.vue"
 import TabsView from "./views/TabsView.vue"
 import AnimationView from "./views/AnimationView.vue"
+import CategoryCRUD from "./views/CategoryCRUD.vue"
 
 //路由設定
 //URL <---> Path => 載入 Component
@@ -93,6 +94,12 @@ const routes = [
         path: '/animations',
         component: AnimationView,
         name: 'animations'
+    },
+    {
+        //http://localhost:5173/category
+        path: '/category',
+        component: CategoryCRUD,
+        name: 'category'
     },
     {
         //路由參數
