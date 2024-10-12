@@ -4,6 +4,10 @@ import { ref } from 'vue';
     const BASE_URL = import.meta.env.VITE_API_BASEURL
 
     const API_URL = `${BASE_URL}/Categories` //'https://localhost:7259/api/Categories'
+    const category = ref({
+        categoryId:0,
+        categoryName:""
+    })
     const categories = ref([])
 
     //讀取Categories資料
@@ -12,6 +16,22 @@ import { ref } from 'vue';
          const datas = await response.json()
          console.log(datas)
          categories.value = datas         
+    }
+
+    //新增分類資料
+    const addCategory = async()=>{
+       // console.log(category.value)
+       const response = await fetch(API_URL,{
+        method:'POST',
+        body:JSON.stringify(category.value),
+        headers:{'Content-Type':'application/json'}
+       })
+     
+       if(response.ok){
+        loadCategories()
+       }else{
+        alert('新增失敗')
+       }
     }
 
     loadCategories()
@@ -29,7 +49,13 @@ import { ref } from 'vue';
                 </li>         
             </ul>
         </div>
-        <div class="col-8"></div>
+        <div class="col-8">
+            <div class="input-group mb-3">
+       <input type="text" class="form-control" v-model="category.categoryName" />
+       <button @click="addCategory" class="btn btn-primary">新增分類</button>
+</div>
+            
+        </div>
       </div>
     </div>
 </template>
