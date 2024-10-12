@@ -34,6 +34,18 @@ import { ref } from 'vue';
        }
     }
 
+    //刪除分類
+    const deleteCategory = async(categoryId)=>{
+        const response = await fetch(`${API_URL}/${categoryId}`,{
+            method:'DELETE'
+        })
+        if(response.ok){
+            loadCategories()
+        }else{
+            alert('刪除失敗')
+        }
+    }
+
     loadCategories()
 </script>
 
@@ -45,7 +57,9 @@ import { ref } from 'vue';
             <ul class="list-group">
                 <li v-for="category in categories" :key="category.categoryId" class="list-group-item d-flex justify-content-between align-items-center">
                    {{ category.categoryName }}
-                    <span class="badge text-bg-primary rounded-pill"></span>
+                    <span @click="deleteCategory(category.categoryId)" class="badge text-bg-danger rounded-pill">
+                        <i class="bi bi-trash-fill"></i>
+                    </span>
                 </li>         
             </ul>
         </div>
