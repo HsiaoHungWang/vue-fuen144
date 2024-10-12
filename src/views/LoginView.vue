@@ -1,5 +1,26 @@
 <script setup>
+import { ref } from 'vue';
 
+const API_URL = `${import.meta.env.VITE_API_BASEURL}/Members/login`
+
+const user = ref({
+  "email":"",
+  "password":""
+})
+
+const send = async()=>{
+    const response = await fetch(API_URL,{
+        method:'POST',
+        body:JSON.stringify(user.value),
+        headers:{'Content-Type':'application/json'}
+    })
+    if(response.ok){
+       const datas = await response.json()
+       alert(datas.message)
+    }
+
+    
+}
 </script>
 
 <template>
@@ -17,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="#!">
+                <form @submit.prevent="send">
                     <div class="row gy-3 gy-md-4 overflow-hidden">
                         <div class="col-12">
                             <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
@@ -25,7 +46,7 @@
                                 <span class="input-group-text">
                                     <i class="bi bi-envelope"></i>
                                 </span>
-                                <input type="email" class="form-control" name="email" id="email" required>
+                                <input type="email" class="form-control" name="email" v-model="user.email" id="email" required>
                             </div>
                         </div>
                         <div class="col-12">
@@ -34,7 +55,7 @@
                                 <span class="input-group-text">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="password" class="form-control" name="password" id="password" value=""
+                                <input type="password" class="form-control" name="password" v-model="user.password" id="password" value=""
                                     required>
                             </div>
                         </div>
