@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue';
+import PagingComponent from '@/components/PagingComponent.vue';
+import { ref, watchEffect } from 'vue';
 const BASE_URL = import.meta.env.VITE_API_BASEURL
 const API_URL = `${BASE_URL}/spots`
 
@@ -8,7 +9,7 @@ const API_URL = `${BASE_URL}/spots`
         "categoryId": 0,
         "sortBy": "spotId",
         "sortType": "desc",
-        "page": 1,
+        "page": 4,
         "pageSize": 9
     })
 
@@ -19,7 +20,7 @@ const result = ref({
 })
 
 
-    const loadSpots = async()=>{
+    watchEffect(async()=>{
        const response = await fetch(API_URL,{
         method:'POST',
         body:JSON.stringify(terms.value),
@@ -30,12 +31,17 @@ const result = ref({
        result.value.spots = datas.spotsResult
 
        console.log(result.value)
-    }
+    })
 
-    loadSpots()
+   
 
     const desc100 = description => description.length <= 100 ? description : description.substring(0, 100) + '...';
 
+    //分頁功能
+    //page 就是子組件傳過來的資料
+   const pagingHandler = page =>{
+    terms.value.page = page
+   }
 </script>
 
 <template>
@@ -56,7 +62,9 @@ const result = ref({
    
   </div>
   
+  
 </div>
+    <PagingComponent @goPaging="pagingHandler" :totalPages="result.totalPages" :thePage="terms.page"></PagingComponent>
     </div>
 </template>
 
