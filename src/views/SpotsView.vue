@@ -1,5 +1,6 @@
 <script setup>
 import PagingComponent from '@/components/PagingComponent.vue';
+import SearchComponent from '@/components/SearchComponent.vue';
 import { ref, watchEffect } from 'vue';
 const BASE_URL = import.meta.env.VITE_API_BASEURL
 const API_URL = `${BASE_URL}/spots`
@@ -9,7 +10,7 @@ const API_URL = `${BASE_URL}/spots`
         "categoryId": 0,
         "sortBy": "spotId",
         "sortType": "desc",
-        "page": 4,
+        "page": 1,
         "pageSize": 9
     })
 
@@ -30,7 +31,7 @@ const result = ref({
        result.value.totalPages =datas.totalPages
        result.value.spots = datas.spotsResult
 
-       console.log(result.value)
+    //    console.log(result.value)
     })
 
    
@@ -42,11 +43,24 @@ const result = ref({
    const pagingHandler = page =>{
     terms.value.page = page
    }
+
+   //關鍵字搜尋
+   //keyword 就是子組件傳過來的資料
+   const searchHandler = keyword =>{
+    terms.value.keyword = keyword
+   }
 </script>
 
 <template>
     <div>
      <h2>台北市景點</h2>
+     <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6"></div>
+        <div class="col-3">
+            <SearchComponent @searchInput="searchHandler"></SearchComponent>
+        </div>
+     </div>
      <div class="row row-cols-1 row-cols-md-3 g-4">
   <div class="col" v-for="{spotId,spotTitle,spotDescription,spotImage,address } in result.spots">
     <div class="card h-100">
