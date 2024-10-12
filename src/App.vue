@@ -11,6 +11,7 @@ import UseStoreTest from './components/UseStoreTest.vue';
 
 import FirstComponent from '@/components/FirstComponent.vue';
 import SecondComponent from './components/SecondComponent.vue';
+import FancyButton from './components/FancyButton.vue';
 // import ComponentLife from './components/ComponentLife.vue';
 // import ButtonCount from './components/ButtonCount.vue';
 // import HomeView from './views/HomeView.vue';
@@ -40,6 +41,15 @@ const items = [FirstComponent, SecondComponent]
 <UseStoreTest></UseStoreTest>
 <hr/>
 <component :is="items[1]"></component> -->
+<FancyButton>
+   <i class="bi bi-airplane-fill"></i>
+        <span class="mx-1">送出</span>
+</FancyButton>
+<FancyButton>
+   <i class="bi bi-car-front-fill"></i>
+   <span class="mx-1">叫車</span>
+</FancyButton>
+
 <hr/>
 <RouterView></RouterView>
 
